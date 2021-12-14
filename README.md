@@ -7,3 +7,6 @@ Jogo criado como parte do treinamento do bootcamp de **HTML Web Developer** da *
 - CSS3
 - JavaScript
 
+### Jogar
+
+https://dam450.github.io/snake-game-dio/ 
