@@ -4,16 +4,23 @@
 }
 
 body {
+  margin-top: 2rem;
+  height: 95vh;
+  width: 95vw;
   background-color: cornsilk;
 }
 
 .game {
-  height: 100vh;
-  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
+h1 {
+  color: darkgreen;
+  font-family: sans-serif;
+}
 canvas {
-  /* padding: auto; */
   margin: 2rem;
   border: 2px solid darkblue;
 }
