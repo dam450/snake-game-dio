@@ -1,18 +1,17 @@
 let canvas = document.getElementById('snake')
 let context = canvas.getContext('2d')
 let box = 32
+let speed = 350
 let snake = []
+
+//canvas size
+canvas.setAttribute('height', 512)
+canvas.setAttribute('width', 512)
 
 // Create gradient
 var grd = context.createLinearGradient(0, 150, 350, 50)
 grd.addColorStop(0, 'lightgreen')
 grd.addColorStop(1, 'green')
-
-context.font = '30px Arial'
-context.strokeText('Snake Game', 8, 8)
-
-canvas.setAttribute('height', 512)
-canvas.setAttribute('width', 512)
 
 snake[0] = {
   x: 8 * box,
@@ -24,6 +23,13 @@ let direction = 'right'
 let food = {
   x: Math.floor(Math.random() * 15 + 1) * box,
   y: Math.floor(Math.random() * 15 + 1) * box
+}
+
+function putText(text) {
+  //adding text
+  context.font = '60px Arial'
+  context.fillStyle = 'red'
+  context.fillText(text, 100, 280)
 }
 
 function createBG() {
@@ -87,9 +93,10 @@ function startGame() {
   for (i = 1; i < snake.length; i++) {
     if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
       clearInterval(game)
-      alert('Game Over')
+      //alert('Game Over')
+      putText('Game Over')
     }
   }
 }
 
-let game = setInterval(startGame, 400)
+let game = setInterval(startGame, speed)
