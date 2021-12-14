@@ -3,6 +3,14 @@ let context = canvas.getContext('2d')
 let box = 32
 let snake = []
 
+// Create gradient
+var grd = context.createLinearGradient(0, 150, 350, 50)
+grd.addColorStop(0, 'lightgreen')
+grd.addColorStop(1, 'green')
+
+context.font = '30px Arial'
+context.strokeText('Snake Game', 8, 8)
+
 canvas.setAttribute('height', 512)
 canvas.setAttribute('width', 512)
 
@@ -19,13 +27,13 @@ let food = {
 }
 
 function createBG() {
-  context.fillStyle = 'lightgreen'
+  context.fillStyle = grd
   context.fillRect(0, 0, 16 * box, 16 * box)
 }
 
 function createSnake() {
   for (i = 0; i < snake.length; i++) {
-    context.fillStyle = 'green'
+    context.fillStyle = 'darkgreen'
     context.fillRect(snake[i].x, snake[i].y, box, box)
   }
 }
