@@ -2,6 +2,7 @@ let canvas = document.getElementById('snake')
 let context = canvas.getContext('2d')
 let box = 32
 let speed = 350
+let score = 0
 let snake = []
 
 //canvas size
@@ -30,6 +31,17 @@ function putText(text) {
   context.font = '60px Arial'
   context.fillStyle = 'red'
   context.fillText(text, 100, 280)
+}
+
+function showScore(text) {
+  //backgroung of score
+  // context.fillStyle = 'blue'
+  // context.fillRect(0, 0, 80, 16)
+
+  //adding text
+  context.font = '16px Arial'
+  context.fillStyle = 'black'
+  context.fillText('Score: ' + text, 3, 16)
 }
 
 function createBG() {
@@ -66,6 +78,7 @@ function startGame() {
 
   createBG()
   createSnake()
+  showScore(score)
   dropFood()
 
   let snakeX = snake[0].x
@@ -81,6 +94,7 @@ function startGame() {
   } else {
     food.x = Math.floor(Math.random() * 15 + 1) * box
     food.y = Math.floor(Math.random() * 15 + 1) * box
+    showScore(score++)
   }
 
   let newHead = {
@@ -90,6 +104,7 @@ function startGame() {
 
   snake.unshift(newHead)
 
+  //condition for game over
   for (i = 1; i < snake.length; i++) {
     if (snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
       clearInterval(game)
